@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+		PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="my" targetRuntime="MyBatis3">
+		<!-- JavaBean 实现 序列化 接口 -->
+		<!-- <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+		</plugin> -->
+		<!-- genenat entity时,生成toString -->
+        <!-- <plugin type="org.mybatis.generator.plugins.ToStringPlugin" /> -->
+        <!-- 自定义物理分页  可生成支持Mysql数据的limit  不支持Oracle -->
+        <!-- <plugin type="org.mybatis.generator.plugins.page.PaginationPlugin" /> -->
+        <!-- 自定义查询指定字段  -->
+        <!-- <plugin type="org.mybatis.generator.plugins.field.FieldsPlugin" /> -->
+        <!-- 开启支持内存分页   可生成 支持内存分布的方法及参数  
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
+        -->
+        <!-- generate entity时，生成hashcode和equals方法
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+		 -->
+		<!-- 此处是将Example改名为Criteria 当然 想改成什么都行~    -->      
+        <!-- <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">  
+	        <property name="searchString" value="Example$" /> -->
+	        <!-- 替换后
+	        <property name="replaceString" value="Criteria" />  
+	         -->
+	        <!-- <property name="replaceString" value="Query" />
+        </plugin>  --> 
+		<!-- 此处是将UserMapper.xml改名为UserDao.xml 当然 想改成什么都行~ -->        
+        <!-- <plugin type="org.mybatis.generator.plugins.rename.RenameSqlMapperPlugin">  
+	        <property name="searchString" value="Mapper" />
+	        <property name="replaceString" value="Dao" />
+        </plugin> -->  
+         
+		<!-- 此处是将UserMapper改名为UserDao 接口 当然 想改成什么都行~  -->        
+        <!-- <plugin type="org.mybatis.generator.plugins.rename.RenameJavaMapperPlugin">  
+	        <property name="searchString" value="Mapper$" />
+	        <property name="replaceString" value="Dao" /> -->
+		<!--关闭注释 -->
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库链接地址账号密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.0.8:3306/txdata_db1?allowMultiQueries=true" userId="root" password="123456">
+		</jdbcConnection>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		
+		<!--生成Model类存放位置 -->
+		<javaModelGenerator targetPackage="com.tx.platform.entity"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!--生成映射文件存放位置 -->
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!--生成Dao类存放位置 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.tx.platform.mapper" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<!--生成对应表及类名 -->
+		<table tableName="t_user_type" domainObjectName="UserType"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+	</context>
+</generatorConfiguration>
